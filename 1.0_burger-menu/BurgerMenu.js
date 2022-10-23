@@ -1,3 +1,5 @@
+import { parametersMenu } from "./utils/parametersBurgerMenu.js";
+
 const templateElement = document.createElement("template");
 
 templateElement.innerHTML = `
@@ -85,8 +87,8 @@ templateElement.innerHTML = `
 class BurgerMenu extends HTMLElement {
   constructor() {
     super();
-
-    this.href = this.getAttribute('href') || ""
+    this.properties = parametersMenu || "";
+    
     this.textcontent = this.getAttribute('textcontent') || ""
     this.attachShadow({ mode: "open" });
   }
@@ -95,14 +97,15 @@ class BurgerMenu extends HTMLElement {
     const template = templateElement.content.cloneNode(true);
     this.shadowRoot.appendChild(template);
     const anchorContainerElement = this.shadowRoot.querySelector('.burger__menu__list');
-    const listAnchors = this.href.split(',')
-    const names = this.textcontent.split(',')
-    for(let i = 0; i < listAnchors.length; i++) {
+
+    for(let i = 0; i < this.properties.length; i++) {
+      const href = this.properties[i].href;
+      const textContent = this.properties[i].textContent;
       const anchor = document.createElement('a');
       anchor.setAttribute('class', 'burger__menu__item')
-      anchor.setAttribute('href', listAnchors[i]);
-      anchor.textContent = names[i];
-      if(!listAnchors[i].startsWith("#")){
+      anchor.setAttribute('href', this.properties[i].href);
+      anchor.textContent = textContent;
+      if(!this.properties[i].href.startsWith("#")){
         anchor.setAttribute('target', '_blank')
       }
 
@@ -112,7 +115,7 @@ class BurgerMenu extends HTMLElement {
       })
       
       anchorContainerElement.appendChild(anchor)
-
+      
     }
     
   }
