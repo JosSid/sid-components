@@ -9,7 +9,7 @@ templateElement.innerHTML = `
   margin: auto;
   border: solid 2px black;
   border-radius: 10px;
-  background: var(--background-primary-color, whitesmoke);
+  background: var(--background-button-primary-color, whitesmoke);
   height: 80px;
   width: 80px;
   color: #fff;
@@ -24,7 +24,7 @@ templateElement.innerHTML = `
   position: fixed;
   top: 91px;
   bottom: 0;
-  background-color: #f08080;
+  background-color: var(--background-primary-color,#f08080);
   width: 100%;
   left: 0;
   display:flex;
@@ -36,7 +36,7 @@ templateElement.innerHTML = `
 }
 
 .burger__menu__item {
-  color: #fff;
+  color: var(--text-color, #fff);
   font-size: var(--font-size-menu-item, 40px);
   text-decoration: none;
   --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
@@ -46,7 +46,7 @@ templateElement.innerHTML = `
   
   content: "";
   display: block;
-  background: #fff;
+  background: var(--text-color, #fff);
   width: 100%;
   margin-top: 3px;
   height: 3px;
@@ -87,9 +87,9 @@ templateElement.innerHTML = `
 class BurgerMenu extends HTMLElement {
   constructor() {
     super();
-    this.properties = parametersMenu || "";
+    this.properties = parametersMenu || {href: "", textContent: ""} ;
     
-    this.textcontent = this.getAttribute('textcontent') || ""
+    
     this.attachShadow({ mode: "open" });
   }
 
@@ -103,7 +103,7 @@ class BurgerMenu extends HTMLElement {
       const textContent = this.properties[i].textContent;
       const anchor = document.createElement('a');
       anchor.setAttribute('class', 'burger__menu__item')
-      anchor.setAttribute('href', this.properties[i].href);
+      anchor.setAttribute('href', href);
       anchor.textContent = textContent;
       if(!this.properties[i].href.startsWith("#")){
         anchor.setAttribute('target', '_blank')

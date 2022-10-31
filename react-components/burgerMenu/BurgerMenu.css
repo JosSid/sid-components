@@ -1,0 +1,148 @@
+/* .burger__menu__wrapper {
+    margin: auto;
+    border: solid 2px black;
+    border-radius: 10px;
+    background: var(--background-primary-color, whitesmoke);
+    height: 80px;
+    width: 80px;
+    color: #fff;
+  }
+  .burger__menu__img {
+    width: 120px;
+    
+  }
+  .burger__menu__list {
+    position: fixed;
+    top: 91px;
+    bottom: 0;
+    background-color: #f08080;
+    width: 100%;
+    left: 0;
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+     clip-path: circle(0 at center);  
+    transition: clip-path 1s ease-in-out;
+  }
+  .burger__menu__item {
+    color: #fff;
+    font-size: var(--font-size-menu-item, 40px);
+    text-decoration: none;
+    --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  .burger__menu__item::after {
+    
+    content: "";
+    display: block;
+    background: #fff;
+    width: 100%;
+    margin-top: 3px;
+    height: 3px;
+    clip-path: var(--clippy);
+    transition: clip-path .8s;
+  }
+  .burger__menu__item:hover {
+    --clippy: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .burger__menu__input:checked + .burger__menu__list{
+    clip-path: circle(100% at center);
+  } 
+  .burger__menu__input  {
+    display: none;
+  }
+  .burger__menu__label {
+    display: block;
+    cursor: pointer;
+  }
+
+  .aqui_vuelvo_a_empezar {
+    display: none;
+  }
+
+   */
+
+   .burger__menu__wrapper {
+    display: block;
+   }
+
+   .burger__menu__img {
+    width: 90px;
+    
+ }
+
+ .burger__menu__list {
+  margin-inline-end: 20px;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 3em;
+}
+
+.burger__menu__item {
+  font-size: 30px;
+  color: rgb(17, 14, 14);
+  text-decoration: none;
+  --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.burger__menu__item::after {
+  
+  content: "";
+  display: block;
+  background: rgb(17, 14, 14);
+  width: 100%;
+  margin-top: 3px;
+  height: 3px;
+  clip-path: var(--clippy);
+  transition: clip-path .8s;
+}
+
+.burger__menu__item:hover {
+  --clippy: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.burger__menu__input:checked + .burger__menu__list{
+  background-color: whitesmoke;
+}
+
+.burger__menu__label, .burger__menu__input {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+  .burger__menu__wrapper {
+    display: block;
+    margin: 10px 20px 10px auto;
+    border: solid 2px black;
+    border-radius: 10px;
+    background: var(--background-primary-color, whitesmoke);
+    height: 60px;
+    width: 60px;
+    color: #fff;
+   }
+
+  .burger__menu__label {
+      display: block;
+      cursor: pointer;
+  }
+  
+  .burger__menu__list {
+      position: fixed;
+      top: 80px;
+      bottom: 0;
+      background-color: rgba(17, 14, 14, 0.3);;
+      width: 100%;
+      left: 0;
+      display:flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      align-items: center;
+       clip-path: circle(0 at center);  
+      transition: clip-path 1s ease-in-out;
+  }
+
+  .burger__menu__input:checked + .burger__menu__list{
+      clip-path: circle(100% at center);
+  } 
+}
